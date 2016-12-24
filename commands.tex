@@ -1,0 +1,31 @@
+%!TEX root = thesis.tex
+
+% ------------------- LAYOUT MODIFICATIONS ---------------------- %
+% Equation numbers: (section_nr.equation_nr)
+\numberwithin{equation}{section}
+
+% ----------------------- CUSTOM COMMANDS ----------------------- %
+
+% equal sign with 'def'
+\newcommand{\defeq}{\ensuremath{\stackrel{\mathrm{def}}{=}}}
+
+% The Gaussian function
+\newcommand{\gaussian}[1] {\ensuremath{\frac{1}{\sqrt{2 \pi}} e^{-\frac{(#1)^2}{2}}}}
+\newcommand{\gaussianexppart}[1] {\ensuremath{\exp\bigg(\frac{(#1)^2}{2}\bigg)}}
+\newcommand{\gaussianexp}[1] {\ensuremath{\frac{1}{\sqrt{2 \pi}} \gaussianexppart{#1}}}
+
+% Expectation
+\newcommand{\Ex}{\mathop{\textbf E\/}}
+
+% Command for displaying debug messages when the setdebug flag is true
+\newcommand{\debug}[1]
+{
+  \ifthenelse{\equal{\setdebug}{true}}{DEBUG: \textbf{#1}}{}
+}
+
+% Argmax and argmin
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{min}}\;}
+
+% Big-O
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}

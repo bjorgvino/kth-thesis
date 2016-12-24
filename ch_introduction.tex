@@ -1,0 +1,28 @@
+%!TEX root = thesis.tex
+
+\pagestyle{newchap}
+
+\chapter{Introduction}
+One of the biggest challenges in the field of computer vision today is object recognition in the real world. The amount of information available to be perceived at any given point in the world is enormous so making intelligent decisions about where to obtain information from is essential for literally any task. This is important for us humans in our daily lives and even more important for machines that are set out to solve difficult tasks in the real world.
+
+Humans use eye movements to focus on specific areas in the visual field and visual attention is the mechanism that decides which area to focus on, i.e. where to obtain information from, which greatly reduces the search space. When it comes to machines this problem is typically solved using the \emph{sliding window} approach, where a window of a specific size is slided over an image and in each position only the part of the image that is visible through the window is processed. The window size and the amount of overlap between positions can be varied. Visual attention can be simulated with this approach by using fast and simple detectors to quickly identify areas in an image that are of little interest and applying more accurate detectors on other areas of the image.
+
+In order to make intelligent decisions, one needs to make use of information and the quality of that information is a key factor for the quality of the decision making itself. In general, searching for an object in an image requires every part of the image to be processed, one by one, until either the object is found or all parts have been processed with negative results. Being able to derive a strategy that determines which parts of an image should be processed first, based on the expected information to be gained from processing each part, could potentially result in a faster and more intelligent way of searching for objects in images.
+
+This report was written for OCULUSai Technologies AB, a Swedish computer vision company that focuses on product recognition. One of the main problems the company is trying to solve is recognition of shoes, bags and other fashion items in photos taken by consumers on their mobile devices. One step in that process is to detect if the item in question is present in a photo and where it is located.
+
+In this report a learning framework, using a method for learning information\hyp{}gathering strategies \cite{Butko2010b}, has been implemented and evaluated by simulation, and an example of how the framework might be used to enhance performance of an object detection algorithm is discussed.
+
+\section{Contributions}
+
+The goal of this thesis is to implement a POMDP (Partially Observable Markov Decision Process) learning framework that uses a policy gradient method and information rewards as a training signal for learning policies that maximize information. The learning framework will be evaluated by simulation and comparing the learned policies with fixed policies, and its potential use in object detection in images will be discussed.
+
+\section{Related Work}
+Information\hyp{}gathering strategies have been successfully used to learn optimal policies for control of eye movements \cite{Butko2010b}, for speeding up reinforcement learning in POMDPs \cite{Fasel2011a} and for acoustic exploration of objects \cite{Fasel2011b} to name a few examples.
+Employing a selective information\hyp{}gathering strategy in a mobile robot, where the robot reasons whether deviating from the shortest path to a goal in order to get to a more suitable vantage point is beneficial or not, has been shown to improve the precision of object detections \cite{Velez2011}.
+The policy gradient method used in this report is presented in \cite{BaxterB2001}.
+
+\section{Outline}
+Chapter \ref{ch:Background} introduces the fundamentals of the POMDP framework and its extensions towards information-driven policies. Chapter \ref{ch:IPOMDP} describes the scenario used for evaluation and presents problem specific models. Chapter \ref{ch:Implementation} presents the POMDP learning framework that was implemented and provides information on how it can be used. In Chapter \ref{ch:Evaluation} the implementation is evaluated by training information\hyp{}gathering policies and comparing them with several fixed policies. Finally, in Chapter \ref{ch:Conclusions}, the conclusions and future work are discussed along with the potential use of the framework for object detection.
+
+Appendix \ref{app:Derivations} contains derivations and equations used in the report and Appendix \ref{app:GradientCImplementation} contains a C implementation of the policy gradient method, described in Section \ref{sec:PolicyGradient}.

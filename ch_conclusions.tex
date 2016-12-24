@@ -1,0 +1,14 @@
+%!TEX root = thesis.tex
+
+\chapter{Conclusions}
+\label{ch:Conclusions}
+Being able to train a policy that performs well using only intrinsic information is a fascinating idea. It enables us to train policies for agents with no specific tasks other than gathering information. Policies like that can be useful in situations where agents are waiting for tasks and need to be prepared before starting them. They can also be useful for robots that need to interact with humans, since actively gathering information can be important for the robot to be able to resolve human statements. When faced with limitations of sensors and resources such as the field of view of a camera, the range of a microphone or energy for moving around, planning of active information gathering becomes crucial.
+
+In this report we have seen that it is possible to use the I-POMDP framework to train policies that outperform other policies by taking actions that maximize information, but we have also found that the performance of these trained policies depends heavily on the underlying observation model.
+
+Before being able to use the I-POMDP framework to train policies for faster detection of objects in images, a suitable observation model must be constructed. If a suitable model is available, plugging it into the framework is an easy task.
+
+\section{Future Work}
+Training policies using the policy gradient method, as it was implemented for this report, required all policy parameters to be updated individually. Since the policy parameters depend on the size of the state- and action spaces, the larger the problem the more challenge it is to train a policy. For object detection in images it is possible to take advantage of shift- and rotation-invariance and tie related parameter values together \cite{Butko2010b}. This can reduce the number of parameters needed to train dramatically.
+
+Another area where the method could be used is in robot exploration. Assume we have a robot with many different sensors for gathering semantic information about its environment. In order for it to gather relative information efficiently it would need to be able to reason about what questions to ask, i.e. which sensor to use, and where and when to ask them. In a scenario like that it would be desirable to learn a policy that chooses questions based on the potential amount of information the answers could provide.

@@ -1,0 +1,81 @@
+% -------------------------- SETTINGS --------------------------- %
+\documentclass[a4paper,11pt]{kth-mag} % Shouldn't use {openany}
+\let\ifpdf\relax                    % To make the hyperref package work (MacTex doesn't like this!)
+\usepackage{lmodern}                % Latin modern fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}         % For Icelandic/Swedish characters
+\usepackage{textcomp}               % Allows the use of extra characters
+\usepackage[swedish,english]{babel} % For Swedish/English hyphenation patterns
+\usepackage{datetime2}              % For setting the date format
+\usepackage{modifications}          % KTH Template modifications
+\usepackage{mathtools}              % Math support
+\usepackage{amsfonts}               % This provides all the number set symbols (or \usepackage{amssymb})
+\usepackage{dsfont}                 % This provides nicer font for the R symbol
+\usepackage{graphicx}               % For images
+\usepackage{titlesec}               % For changing chapter heading style
+\usepackage{ifthen}                 % To enable if-else statements for the debug command
+\usepackage[htt]{hyphenat}          % Fix hyphenation
+\usepackage{hyperref}               % Adds hyper links to TOC and references (very nice). Must be the last package added apparently!
+\usepackage{listings}               % For displaying code
+\usepackage{enumitem}               % For styling enumerations (e.g. description environment)
+\usepackage[section]{placeins}      % Testing this package for figure placement
+\usepackage{pdfpages}               % For the KTH cover
+\newcommand{\setdebug}{false}       % Flag for debug messages (true = display debug messages)
+\input{commands}
+\DTMsetstyle{iso}                   % Swedish date format on flyleaf page
+
+% --------------------------- THESIS ---------------------------- %
+\title{Partially Observable Markov Decision Processes for Faster Object Recognition}
+
+\author{Björgvin Olafsson}
+\email{bjoola@kth.se}
+
+\blurb{DD221X, Master’s Thesis in Computer Science (30 ECTS credits)
+\\Master’s Programme in Machine Learning 120 credits
+\\Supervisor at KTH: Andrzej Pronobis
+\\Supervisor at principal: Babak Rasolzadeh
+\\Examiner: Stefan Carlsson
+\\Principal: OculusAI Technologies AB}
+\date{\today}
+\trita{}
+
+\begin{document}
+
+\frontmatter
+\pagestyle{empty}
+\removepagenumbers
+\includepdf[pages={1}, pagecommand={}]{kth-cover.pdf}
+\maketitle
+
+\input{abstract}
+\input{acknowledgments}
+
+\tableofcontents*
+
+% ------------------------ MAIN MATTER -------------------------- %
+\mainmatter
+
+\input{ch_introduction}
+\input{ch_background}
+\input{ch_ipomdp}
+\input{ch_implementation}
+\input{ch_evaluation}
+\input{ch_conclusions}
+
+% ------------------------ REFERENCES --------------------------- %
+\renewcommand{\bibname}{References}
+
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+% ------------------------- APPENDIX ---------------------------- %
+\appendix
+\addappheadtotoc
+\input{appendix_equations.tex}
+\input{appendix_mex.tex}
+
+\clearpage
+\thispagestyle{empty}
+\includepdf[pages={2}, pagecommand={}]{kth-cover.pdf}
+
+\end{document}
